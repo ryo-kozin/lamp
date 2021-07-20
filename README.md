@@ -43,7 +43,7 @@ If you create a laravel project, keep following the commands below.
 - `root`   
 - `create database {database name};`   
 - `exit;`      
-9. Finally open /lamp/000-default.conf then chage the code.     
+9. Finally open /lamp/apache/000-default.conf then chage the code.     
 - From `DocumentRoot /var/www/html/test/public` to `DocumentRoot /var/www/html/{project name}/public`      
 11. Access http://localhost, you can see the laravel project.
     
