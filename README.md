@@ -45,7 +45,7 @@ If you create a laravel project, keep following the commands below.
 - `exit;`      
 9. Finally open /lamp/apache/000-default.conf then chage the code.     
 - From `DocumentRoot /var/www/html/test/public` to `DocumentRoot /var/www/html/{project name}/public`      
-11. Access http://localhost, you can see the laravel project.
+10. Access http://localhost, you can see the laravel project.
     
 ## URL    
 localhost : http://localhost   
