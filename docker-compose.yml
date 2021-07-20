@@ -13,7 +13,8 @@ services:
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./apache/apache2.conf:/etc/apache2/apache2.conf
       - ./apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
-      - ./apache/log:/var/log/apache2/
+      # Uncomment the code if you want to see logs.
+      # - ./apache/log:/var/log/apache2/
     ports:
       - 80:80
     links:
