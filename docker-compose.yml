@@ -13,10 +13,16 @@ services:
       - ./php/php.ini:/usr/local/etc/php/php.ini
       - ./apache/apache2.conf:/etc/apache2/apache2.conf
       - ./apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      # SSL
+      - ./apache/ssl/example.com-key.pem:/etc/apache2/ssl/example.com-key.pem
+      - ./apache/ssl/example.com.pem:/etc/apache2/ssl/example.com.pem
       # Uncomment the code if you want to see logs.
       # - ./apache/log:/var/log/apache2/
+    # extra_hosts:
+      # - "new_cms_system.com:127.0.0.1"
     ports:
       - 80:80
+      - 443:443
     links:
       - db
     depends_on:

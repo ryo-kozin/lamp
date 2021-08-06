@@ -13,9 +13,12 @@ RUN apt-get update \
 RUN cd /etc/apache2/mods-enabled \
     && ln -s ../mods-available/rewrite.load
 
+# SSL
+RUN a2enmod ssl
+
+
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
-
-
+CMD ["apache2-foreground"]

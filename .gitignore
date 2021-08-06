@@ -1,2 +1,4 @@
 mysql/data
 apache/log
+apache/ssl
+html
