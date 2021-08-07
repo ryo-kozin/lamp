@@ -18,8 +18,6 @@ services:
       - ./apache/ssl/example.com.pem:/etc/apache2/ssl/example.com.pem
       # Uncomment the code if you want to see logs.
       # - ./apache/log:/var/log/apache2/
-    # extra_hosts:
-      # - "new_cms_system.com:127.0.0.1"
     ports:
       - 80:80
       - 443:443
