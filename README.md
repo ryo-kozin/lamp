@@ -13,7 +13,6 @@ Docker
 | laravel-phpmyadmin | phpmyadmin | phpmyadmin     |
 
 #php-apache (this image will be created by a Dockerfile in your docker images)  
-#You don't need use laravel in this local host, names of these containers include laravel though.
     
 ## Network
 | network name   | relation                 | driver |
