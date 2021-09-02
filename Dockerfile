@@ -8,7 +8,7 @@ RUN apt-get update \
     vim \
     zlib1g-dev \
     libpng-dev \
-    && docker-php-ext-install pdo_mysql mysqli
+    && docker-php-ext-install pdo_mysql mysqli sockets
 
 RUN cd /etc/apache2/mods-enabled \
     && ln -s ../mods-available/rewrite.load
