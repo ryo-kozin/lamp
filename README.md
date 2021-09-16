@@ -5,7 +5,7 @@ If you are the person who is looking for the way to create lamp server quickly, 
 ## A must
 Docker      
 
-## Sturucture
+## Structure
 | container name     | image      | function       |
 | ------------------ | ---------- | --------       |
 | laravel-app        | php-apache | apache, php    |
@@ -33,7 +33,7 @@ Docker
 ___
 If you create a laravel project, keep following the commands below.    
 4. `docker exec -it laravel-app bash`  
-5. `comopser create-project laravel/laravel {project name}`    
+5. `composer create-project laravel/laravel {project name}`    
 6. `exit`    
 7. `open .env file in the project`   
 8. Change the infomation.`DB_HOST = laravel-db, DB_DATABASE = user_system, DB_PASSWORD = root`     
