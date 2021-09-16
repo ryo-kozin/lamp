@@ -5,7 +5,7 @@ If you are the person who is looking for the way to create lamp server that is a
 ## A must
 Docker      
 
-## Sturucture
+## Structure
 | container name     | image      | function       |
 | ------------------ | ---------- | --------       |
 | laravel-app        | php-apache | apache, php    |
@@ -48,7 +48,7 @@ SSLCertificateKeyFile /etc/apache2/ssl/{SSLCertificateKeyFile}
     - `Ctrl + C`, then `docker-compose start`
     - Lamp will be built soon.       
 8. `docker exec -it laravel-app bash`  
-9. `comopser create-project laravel/laravel {project name}`    
+9. `composer create-project laravel/laravel {project name}`    
 10. `exit`    
 11. `open .env file in the project`   
 12. Change the infomation.`DB_HOST = laravel-db, DB_DATABASE = user_system, DB_PASSWORD = root`     
