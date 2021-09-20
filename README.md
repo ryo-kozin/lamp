@@ -50,3 +50,7 @@ If you create a laravel project, keep following the commands below.
 ## URL    
 localhost : http://localhost   
 phpmyadmin : http://localhost:8000    
+
+## Tips
+If you set some server name, you need to chage apache/000-default.conf.
+Add NameVirtualHost *:80 on the top in the file.
