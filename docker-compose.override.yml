@@ -1,0 +1,54 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: app
+    working_dir: /var/www/html
+    volumes:
+      - ./html:/var/www/html
+      - ./php/php.ini:/usr/local/etc/php/php.ini
+      - ./apache/apache2.conf:/etc/apache2/apache2.conf
+      - ./apache/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      # Uncomment the code if you want to see logs.
+      # - ./apache/log:/var/log/apache2/
+    ports:
+      - 80:80
+    networks:
+      - app
+
+  db:
+    container_name: db
+    environment:
+      MYSQL_DATABASE: user_system
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Tokyo
+    volumes:
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+      - ./mysql/data:/var/lib/mysql
+    networks:
+      - app
+  
+  phpmyadmin:
+    container_name: phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    volumes:
+      - phpmyadmin:/sessions
+    ports:
+      - 8000:80
+    depends_on:
+      - db
+    networks:
+      - app
+
+volumes:
+  phpmyadmin:
+
+networks:
+  app:
+    driver: bridge
