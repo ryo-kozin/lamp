@@ -16,29 +16,23 @@ Docker
 #You don't need use laravel in this local host, names of these containers include laravel though.
     
 ## Network
-| network name   | relation                 | driver |
-| -------------- | ------------------------ | ------ |
-| app-db         | apache, php - mariadb    | bridge |
-| app-phpmyadmin | apache, php - phpmyadmin | bridge |
-| db-phpmyadmin  | mariadb - phpmyadmin     | bridge |
-    
+| network name   | driver |
+| -------------- | ------ |
+| app            | bridge |
 
 ## How to build lamp
 1. `git clone https://github.com/ryo-kozin/lamp.git`    
 2. `cd lamp`   
 3. `docker-compose up -d`
-    - If the command can't finish evne you waited for a few minuts, please try the commans below
-    - `Ctrl + C`, then `docker-compose start`
-    - Lamp will be built soon.
 ___
 If you create a laravel project, keep following the commands below.    
-4. `docker exec -it laravel-app bash`  
+4. `docker-compose exec app bash`  
 5. `composer create-project laravel/laravel {project name}`    
 6. `exit`    
 7. `open .env file in the project`   
-8. Change the infomation.`DB_HOST = laravel-db, DB_DATABASE = user_system, DB_PASSWORD = root`     
+8. Change the infomation.`DB_HOST = db, DB_DATABASE = user_system, DB_PASSWORD = root`     
 - You can create a new database to excute commands below.    
-- `docker exec -it laravel-db bash`    
+- `docker-compose exec db bash`    
 - `mysql -uroot -p`    
 - `root`   
 - `create database {database name};`   
