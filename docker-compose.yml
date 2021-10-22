@@ -5,8 +5,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     image: php-apache
-    container_name: laravel-app
-    restart: unless-stopped
+    container_name: app
     working_dir: /var/www/html
     volumes:
       - ./html:/var/www/html
@@ -17,56 +16,42 @@ services:
       # - ./apache/log:/var/log/apache2/
     ports:
       - 80:80
-    links:
-      - db
-    depends_on:
-      - db
     networks:
-      - app-db
-      - app-phpmyadmin
+      - app
 
   db:
     image: mariadb
-    container_name: laravel-db
-    restart: unless-stopped
+    container_name: db
     environment:
       MYSQL_DATABASE: user_system
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: test
-      MYSQL_USER: test
       TZ: Asia/Tokyo
     volumes:
       - ./mysql/my.cnf:/etc/mysql/my.cnf
       - ./mysql/data:/var/lib/mysql
     networks:
-      - app-db
-      - db-phpmyadmin
+      - app
   
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: laravel-phpmyadmin
-    restart: unless-stopped
+    container_name: phpmyadmin
     environment:
       - PMA_ARBITRARY=1
-      - PMA_HOSTS=laravel-db
+      - PMA_HOSTS=db
       - PMA_USER=root
       - PMA_PASSWORD=root
     volumes:
-      - ./phpmyadmin/sessions:/sessions
+      - phpmyadmin:/sessions
     ports:
       - 8000:80
-    links:
-      - db
     depends_on:
       - db
     networks:
-      - app-phpmyadmin
-      - db-phpmyadmin
+      - app
+
+volumes:
+  phpmyadmin:
 
 networks:
-  app-db:
-    driver: bridge
-  app-phpmyadmin:
-    driver: bridge
-  db-phpmyadmin:
+  app:
     driver: bridge
